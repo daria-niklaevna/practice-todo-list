@@ -3,7 +3,7 @@
 {% block content %}
     <h1>
         Tags
-        <a style="float: right" href="{% url 'todo:tag-create' %}">Add</a>
+        <a style="float: right" class="btn btn-primary" href="{% url 'todo:tag-create' %}">Add tag</a>
     </h1>
     <br>
 
@@ -21,10 +21,10 @@
                   {{ tag.name }}
               </td>
               <td>
-                  <a href="{% url "todo:tag-update" pk=tag.id %}">UPDATE</a>
+                  <a href="{% url "todo:tag-update" pk=tag.id %}" class="btn btn-primary">UPDATE</a>
               </td>
               <td>
-                  <a href="{% url "todo:tag-delete" pk=tag.id %}">DELETE</a>
+                  <a href="{% url "todo:tag-delete" pk=tag.id %}" class="btn btn-danger">DELETE</a>
               </td>
           </tr>
         {% endfor %}
