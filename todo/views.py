@@ -33,15 +33,17 @@ class ToDoDeleteView(generic.DeleteView):
 
 
 def change_progress_to_y(request, pk):
-    task = Task.objects.get(id=request.task.id)
+    task = Task.objects.get(id=pk)
     task.progress = "Y"
-    return HttpResponseRedirect(reverse_lazy("todo:change-to-y", args=[pk]))
+    task.save()
+    return HttpResponseRedirect(reverse_lazy("todo:task-list"))
 
 
 def change_progress_to_n(request, pk):
-    task = Task.objects.get(id=request.task.id)
+    task = Task.objects.get(id=pk)
     task.progress = "N"
-    return HttpResponseRedirect(reverse_lazy("todo:change-to-n", args=[pk]))
+    task.save()
+    return HttpResponseRedirect(reverse_lazy("todo:task-list"))
 
 
 class TagListView(generic.ListView):
